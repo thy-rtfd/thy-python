@@ -1,0 +1,17 @@
+version: 2
+
+sphinx :
+  configuration: src/conf.py
+
+python :
+  install:
+    - requirements: requirements.txt
+
+build  :
+  os   : ubuntu-22.04
+  tools:
+    python: "3.11"
+  jobs :
+    post_create_environment:
+      - pip install peru
+      - peru sync --no-cache
